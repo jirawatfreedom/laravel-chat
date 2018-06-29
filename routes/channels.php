@@ -13,8 +13,11 @@
 */
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+    return $user->id ===  $id;
 });
 Broadcast::channel('chatroom', function ($user) {
     return $user;
+});
+Broadcast::channel('chat', function ($user) {
+  return Auth::check();
 });
